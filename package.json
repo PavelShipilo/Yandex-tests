@@ -1,0 +1,29 @@
+{
+  "name": "yandex-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor conf.js",
+    "update-drivers": "webdriver-manager update",
+    "start-drivers": "webdriver-manager start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PavelShipilo/Yandex-tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PavelShipilo/Yandex-tests/issues"
+  },
+  "homepage": "https://github.com/PavelShipilo/Yandex-tests#readme",
+  "dependencies": {
+    "protractor": "^5.4.3"
+  },
+  "devDependencies": {
+    "jasmine-expect": "^4.0.3",
+    "jasmine-reporters": "^2.0.0",
+    "jasmine-spec-reporter": "^5.0.1"
+  }
+}
