@@ -1,5 +1,5 @@
-let geoPage = require('../pages/geoPage');
-let mainPage = require('../pages/mainPage');
+let geoPage = require('../../pages/yandex.by/geoPage');
+let mainPage = require('../../pages/yandex.by/mainPage');
 
 describe('Main page yandex tests', function() {
     it('Compare "More" menu elements to be equal in case of different geolocations selected', async function() {

@@ -12,5 +12,9 @@ const waiters = function () {
     this.elementIsVisible = function (element) {
         browser.wait(EC.visibilityOf(element), 1000);
     } 
+
+    this.elementIsSelected = function (element) {
+        browser.wait(EC.elementToBeSelected(element), 1000);
+    }
 };
 module.exports = new waiters();

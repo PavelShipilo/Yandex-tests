@@ -1,4 +1,4 @@
-let waiters = require('../pages/waiters')
+let waiters = require('../waiters')
 
 const geoPage = function() { 
     let searchField = element(by.id('city__front-input'));

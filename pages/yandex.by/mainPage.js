@@ -1,4 +1,4 @@
-let waiters = require('../pages/waiters')
+let waiters = require('../waiters')
 
 const mainPage = function() {   
     const moreButton = element(by.css('[data-statlog="tabs.more"]'));
