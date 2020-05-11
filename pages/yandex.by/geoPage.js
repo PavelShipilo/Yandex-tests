@@ -1,16 +1,18 @@
-let waiters = require('../waiters')
+const Waiters = require('../../waiters')
 
-const geoPage = function() { 
-    let searchField = element(by.id('city__front-input'));
-    let searchFieldDropdown = element(by.css('.popup__items'));
-    let searchFieldDropdownFrstEl = element(by.css('ul:first-child'));
-            
-    this.changeGeolocation = async function(city) {
-        waiters.elementIsClickable(searchField);        
-        await searchField.clear();
-        await searchField.sendKeys(city);
-        waiters.elementIsVisible(searchFieldDropdownFrstEl);
-        await searchFieldDropdownFrstEl.click();         
-    };
-};
-module.exports = new geoPage();
+class geoPage {
+    constructor () {
+        this.waiters = new Waiters(); 
+        this.searchField = by.id('city__front-input');
+        this.searchFieldDropdown = by.css('.popup__items');
+        this.searchFieldDropdownFrstEl = by.css('ul:first-child');
+    }   
+        async changeGeolocation(city) {
+            this.waiters.elementIsClickable(element(this.searchField));        
+            await element(this.searchField).clear();
+            await element(this.searchField).sendKeys(city);
+            this.waiters.elementIsVisible(element(this.searchFieldDropdownFrstEl));
+            await element(this.searchFieldDropdownFrstEl).click();         
+        }
+    }
+module.exports = geoPage;

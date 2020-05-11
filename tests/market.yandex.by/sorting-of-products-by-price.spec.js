@@ -8,14 +8,14 @@ describe('catalog', function() {
     const computersPage = new ComputersPage();
     const catalogPage = new CatalogPage();
     
-    it('if manufacturers filter is selected, then products are displayed due to the filter', async function() {  
+it('if products are sorted by price they are displayed in correct order', async function() {
 
     await marketMainPage.openMainPage();
     await marketMainPage.openComputersTab();
-    await computersPage.openPlanshetyTab();    
-    await catalogPage.selectManufacturer(catalogPage.appleManufacturer);
-    catalogPage.allProductTitles.each(function(element, index) {
-    expect(element.getText()).toContain('Apple');      
-    });
+    await computersPage.openPlanshetyTab();     
+    await element(catalogPage.sortingByPrice).click();
+    expect(browser.getCurrentUrl()).toContain('aprice');
+    await element(catalogPage.sortingByPrice).click();
+    expect(browser.getCurrentUrl()).toContain('dprice');    
 });
 });

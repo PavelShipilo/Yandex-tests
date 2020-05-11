@@ -1,15 +1,23 @@
-let marketMainPage = require('../../pages/market.yandex.by/mainPage/marketMainPage');
-let computersPage = require('../../pages/market.yandex.by/mainPage/computers/computersPage');
-let catalogPage = require('../../pages/market.yandex.by/catalog/catalogPage');
+const MarketMainPage = require('../../pages/market.yandex.by/mainPage/marketMainPage');
+const ComputersPage = require('../../pages/market.yandex.by/mainPage/computers/computersPage');
+const CatalogPage = require('../../pages/market.yandex.by/catalog/catalogPage');
+const Waiters = require('../../pages/waiters');
 
-describe('каталог товаров', function () {
-    it('если задано количество товаров для отображения на странице в выпадающем меню, то фактически на странице отображается соответствующее количество ', async function () {
+describe('catalog', function () {
+
+    const marketMainPage = new MarketMainPage();
+    const computersPage = new ComputersPage();
+    const catalogPage = new CatalogPage();
+    const waiters = new Waiters();
+
+it('if the number of products is set from the dropdown, then the appropriate number of products is displayed on the page', async function () {
     await marketMainPage.openMainPage();
     await marketMainPage.openComputersTab();
     await computersPage.openPlanshetyTab();
-    await catalogPage.setNumberOfProductsToDisplay(catalogPage.fortyEightProductsToDisplayElement);
     expect(catalogPage.allProductTitles).toBeArrayOfSize(48);
+    await browser.actions().mouseMove(element(catalogPage.numberOfProductsToDisplay)).perform();
     await catalogPage.setNumberOfProductsToDisplay(catalogPage.twelveProductsToDisplayElement);
     expect(catalogPage.allProductTitles).toBeArrayOfSize(12);
-    });
+    await catalogPage.setNumberOfProductsToDisplay(catalogPage.fortyEightProductsToDisplayElement);
+});
 });

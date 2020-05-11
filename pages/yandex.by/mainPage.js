@@ -1,23 +1,23 @@
 let waiters = require('../waiters')
 
-const mainPage = function() {   
-    const moreButton = element(by.css('[data-statlog="tabs.more"]'));
-    const moreDropdown = element.all(by.css('.popup2 .home-tabs__more'));
-    const geoButton = element(by.css('.geolink__reg'));
+class mainPage {  
+    constructor () { 
+        this.moreButton = by.css('[data-statlog="tabs.more"]');
+        this.moreDropdown = element.all(by.css('.popup2 .home-tabs__more'));
+        this.geoButton = by.css('.geolink__reg');      
+        this.mainPageUrl = 'https://yandex.by/';
+    }
+        async openMainPage() {
+            await browser.get(this.mainPageUrl);
+        }
 
-    let mainPageUrl = 'https://yandex.by/';
+        async saveMoreMenuElements(array) {
+            array = element(this.moreDropdown).clone;
+        }
 
-    this.openMainPage = async function() {
-        await browser.get(mainPageUrl);
-    };
-
-    this.saveMoreMenuElements = async function(array) {
-        array = moreDropdown.clone;
-    };
-
-    this.openGeolocationPage = async function() {       
-        waiters.elementIsClickable(geoButton);
-        await geoButton.click();        
-    };
-};
-module.exports = new mainPage();
+        async openGeolocationPage() {       
+            waiters.elementIsClickable(element(this.geoButton));
+            await element(this.geoButton).click();        
+        }
+    }
+module.exports = mainPage;

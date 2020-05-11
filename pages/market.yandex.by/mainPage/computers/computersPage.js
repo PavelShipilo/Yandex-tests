@@ -1,11 +1,13 @@
-let waiters = require('../../../waiters')
+const Waiters = require('../../../waiters')
 
-const computersPage = function() {
-    const planshetyTab = element(by.css('a[href*="/catalog--planshety"]')); 
-    
-    this.openPlanshetyTab = async function () {
-        waiters.elementIsVisible(planshetyTab);
-        await planshetyTab.click();
+class ComputersPage {
+    constructor () {
+        this.waiters = new Waiters();
+        this.planshetyTab = (by.css('a[href*="/catalog--planshety"]')); 
     }
-};
-module.exports = new computersPage();
+    async openPlanshetyTab() {
+        this.waiters.elementIsVisible(this.planshetyTab);
+        await element(this.planshetyTab).click();
+    }    
+}
+module.exports = ComputersPage;

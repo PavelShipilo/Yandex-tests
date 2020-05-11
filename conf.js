@@ -10,10 +10,10 @@ exports.config = {
       }
     },
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['node_modules/jasmine-expect/index.js', './tests/market.yandex.by/check-number-of-product-displayed-due-to-selected-value.spec.js'],
+    specs: ['node_modules/jasmine-expect/index.js', './tests/market.yandex.by/sorting-of-products-by-price.spec.js'],
     capabilities: {
       browserName: 'chrome',
-      chromeOptions: {
+      chromeOptions: {        
         args: [
             '--start-maximized'
         ]

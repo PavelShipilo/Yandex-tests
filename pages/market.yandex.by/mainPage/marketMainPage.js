@@ -1,17 +1,19 @@
-let waiters = require('../../waiters')
+const Waiters = require('../../waiters')
 
-const marketMainPage = function() {   
-    const computersTab = element(by.css('a[href="/catalog--kompiuternaia-tekhnika/54425"]'));    
-    
-    let mainPageUrl = 'https://market.yandex.by/';
-    
-    this.openMainPage = async function() {
-        await browser.get(mainPageUrl);        
-    };
+class MarketMainPage {
+    constructor() {
+        this.waiters = new Waiters();
+        this.computersTab = by.css('a[href="/catalog--kompiuternaia-tekhnika/54425"]');
+        this.mainPageUrl = 'https://market.yandex.by/';
+    }
 
-    this.openComputersTab = async function() {
-        waiters.elementIsVisible(computersTab);
-        await computersTab.click();
-    };
-};
-module.exports = new marketMainPage();
+    async openMainPage() {  
+        await browser.get(this.mainPageUrl);
+    }
+
+    async openComputersTab() {
+        this.waiters.elementIsVisible(this.computersTab);
+        await element(this.computersTab).click();
+    }
+}
+module.exports = MarketMainPage;
