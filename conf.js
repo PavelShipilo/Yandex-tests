@@ -10,9 +10,14 @@ exports.config = {
       }
     },
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['node_modules/jasmine-expect/index.js', './tests/more-menue-values-check-for-Paris-and-London.spec.js'],
+    specs: ['node_modules/jasmine-expect/index.js', './tests/market.yandex.by/sorting-of-products-by-price.spec.js'],
     capabilities: {
       browserName: 'chrome',
+      chromeOptions: {        
+        args: [
+            '--start-maximized'
+        ]
+    }
     },
     onPrepare: () => {
       browser.ignoreSynchronization = true;
